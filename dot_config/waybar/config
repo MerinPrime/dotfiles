@@ -1,0 +1,52 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 50,
+    "spacing": 5,
+    "margin-left": 12,
+    "margin-right": 12,
+    "margin-top": 12,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "custom/spotify"
+    ],
+    "modules-right": [
+        "temperature",
+        "clock"
+    ],
+
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "custom/spotify": {
+        "exec": "python3 ~/.config/waybar/mediaplayer.py --player spotify",
+        "format": "{}",
+        "return-type": "json",
+        "on-click": "playerctl play-pause -p spotify"
+    },
+
+    "temperature": {
+        "thermal-zone": 1,
+        "interval": 5,
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C",
+        "format": "{temperatureC}°C",
+        "format-icons": ["", "", ""],
+        "max-length": 4,
+        "min-length": 4,
+        "tooltip-format": ""
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%A, %d %B %Y}",
+        "tooltip-format": "{calendar}",
+    }
+}

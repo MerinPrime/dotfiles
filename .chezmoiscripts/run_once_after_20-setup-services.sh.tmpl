@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+echo "--- Enabling System Services ---"
+
+sudo systemctl enable --now NetworkManager
+sudo systemctl enable --now bluetooth
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+sudo systemctl enable --now ollama
+
+if [ -f /etc/systemd/zram-generator.conf ]; then
+  echo "--- Activating ZRAM ---"
+  sudo systemctl daemon-reload
+  sudo systemctl start /dev/zram0 || echo "ZRAM already started or not supported in VM"
+fi
+
+echo "--- Setting up Autologin ---"
+sudo mkdir -p /etc/greetd
+sudo cp -f "$HOME/.config/system/greetd/config.toml" "/etc/greetd/config.toml"
+sudo chown -R greeter:greeter /etc/greetd
+sudo systemctl enable greetd.service
+
+echo "--- Services setup complete ---"
+

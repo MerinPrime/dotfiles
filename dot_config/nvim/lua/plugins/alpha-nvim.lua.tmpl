@@ -1,0 +1,61 @@
+local function read_logo(path)
+	local lines = {}
+	local file = io.open(path, "r")
+	if file then
+		for line in file:lines() do
+			table.insert(lines, line)
+		end
+		file:close()
+	else
+		return { "--- Logo file not found ---" }
+	end
+	return lines
+end
+
+return {
+	"goolord/alpha-nvim",
+	event = "VimEnter",
+	cmd = { "Alpha", "AlphaRemap", "AlphaRedraw" },
+	config = function()
+		local alpha = require("alpha")
+		local dashboard = require("alpha.themes.dashboard")
+
+		local logo_path = os.getenv("HOME") .. "/.local/share/logo"
+		dashboard.section.header.val = read_logo(logo_path)
+
+		vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "{{ .colors.nvim.header }}" })
+		vim.api.nvim_set_hl(0, "AlphaFooter", { fg = "{{ .colors.nvim.footer }}" })
+
+		dashboard.section.header.opts.hl = "AlphaHeader"
+		dashboard.section.footer.opts.hl = "AlphaFooter"
+
+		dashboard.section.buttons.val = {
+			dashboard.button("p", "  Projects", "<cmd>Telescope workspaces<CR>"),
+			dashboard.button("o", "  Obsidian", "<cmd>edit /data/diary<CR>"),
+			dashboard.button("n", "  New File", "<cmd>ene <BAR> startinsert<CR>"),
+			dashboard.button("f", "  Find File", "<cmd>Telescope find_files<CR>"),
+			dashboard.button("r", "  Recent Files", "<cmd>Telescope oldfiles<CR>"),
+			-- dashboard.button("s", "  Restore Session", "<cmd>lua require('persistence').load({ last = true })<CR>"),
+			dashboard.button("c", "  Config", "<cmd>edit ~/.config/nvim<CR>"),
+			dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<CR>"),
+			dashboard.button("q", "  Quit", "<cmd>q!<CR>"),
+		}
+
+		alpha.setup(dashboard.config)
+
+		local function footer()
+			local stats = require("lazy").stats()
+			local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
+			return " Neovim loaded in " .. ms .. " ms, with " .. stats.loaded .. "/" .. stats.count .. " plugins"
+		end
+
+		vim.api.nvim_create_autocmd("User", {
+			once = true,
+			pattern = "LazyVimStarted",
+			callback = function()
+				dashboard.section.footer.val = footer()
+				pcall(vim.cmd.AlphaRedraw)
+			end,
+		})
+	end,
+}

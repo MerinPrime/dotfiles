@@ -1,0 +1,74 @@
+@define-color bg_main      {{ .colors.waybar.bg_main }};
+@define-color border_main  {{ .colors.waybar.border_main }};
+@define-color text_main    {{ .colors.waybar.text_main }};
+@define-color text_muted   {{ .colors.waybar.text_muted }};
+@define-color shadow_color {{ .colors.waybar.shadow }};
+
+@define-color accent_active {{ .colors.waybar.accent_active }};
+@define-color accent_urgent {{ .colors.waybar.accent_urgent }};
+@define-color spotify_color {{ .colors.waybar.spotify }};
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+}
+
+#waybar {
+    background-color: alpha(@bg_main, 0.3);
+    color: @text_main;
+    border: 2px solid alpha(@border_main, 0.1);
+    border-radius: 16px;
+}
+
+#workspaces {
+    margin: 0 10px;
+}
+
+#workspaces button {
+    margin: 6px 2px;
+    color: alpha(@text_main, 0.6);
+    background-color: transparent;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: @accent_active;
+    background-color: transparent;
+}
+
+#workspaces button.urgent {
+    color: @accent_urgent;
+}
+
+#workspaces button:hover {
+    color: @text_main;
+}
+
+#custom-spotify {
+    padding: 0 12px;
+    color: @spotify_color;
+    opacity: 0.9;
+}
+
+#clock {
+    padding: 0 15px;
+    color: alpha(@text_main, 0.8);
+}
+
+tooltip {
+    background-color: alpha(@bg_main, 0.1);
+    color: @text_main;
+    border: 2px solid alpha(@border_main, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 10px alpha(@shadow_color, 0.5);
+}
+
+tooltip label {
+    color: @text_muted;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+}

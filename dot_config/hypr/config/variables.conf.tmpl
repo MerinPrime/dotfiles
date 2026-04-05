@@ -1,0 +1,33 @@
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃                       Layout Variables                      ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+source = ~/.config/hypr/config/colors.conf
+
+general {
+    gaps_in = 6
+    gaps_out = 12
+    border_size = 3
+    col.active_border = $active_border
+    col.inactive_border = $inactive_border
+
+    layout = dwindle
+
+    allow_tearing = false
+}
+
+misc {
+    disable_hyprland_logo = true
+    disable_splash_rendering = true
+    force_default_wallpaper = 0
+}
+
+dwindle {
+    special_scale_factor = 0.98
+    pseudotile = yes
+    preserve_split = yes
+}
+
+master {
+    new_status = master
+}

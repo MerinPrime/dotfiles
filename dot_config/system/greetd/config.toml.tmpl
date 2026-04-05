@@ -1,0 +1,10 @@
+[terminal]
+vt = 1
+
+[initial_session]
+command = "start-hyprland > /dev/null 2>&1"
+user = "{{ .chezmoi.username }}"
+
+[default_session]
+command = "tuigreet --time --remember --cmd 'start-hyprland' > /dev/null 2>&1"
+user = "greeter"

@@ -1,0 +1,25 @@
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃                    Decorations Configuration                ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+# https://wiki.hyprland.org/Configuring/Variables/#decoration
+
+decoration {
+    active_opacity = 1
+    rounding = 16
+    dim_special = 0.3
+
+    # https://wiki.hyprland.org/Configuring/Variables/#blur
+    blur {
+        enabled = true
+        size = 3
+        passes = 4 # more passes = more resource intensive.
+        xray = false
+        new_optimizations = true
+    }
+
+    # https://wiki.hyprland.org/Configuring/Variables/#shadow
+    shadow {
+        enabled = false
+    }
+}

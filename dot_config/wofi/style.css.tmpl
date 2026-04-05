@@ -1,0 +1,67 @@
+@define-color bg alpha({{ .colors.wofi.background }}, 0.8);
+@define-color border alpha({{ .colors.wofi.border }}, 0.7);
+@define-color accent {{ .colors.wofi.accent }};
+@define-color text_color {{ .colors.wofi.text }};
+
+* {
+    all: unset;
+    font-family: 'Sarasa UI SC', sans-serif;
+    font-size: 16px;
+}
+
+window {
+    background-color: @bg;
+    border: 2px solid @border;
+    border-radius: 18px;
+}
+
+#outer-box {
+    padding: 20px;
+}
+
+#input {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid @border;
+    color: @text_color;
+}
+
+#input image {
+    margin-right: 15px;
+    margin-left: 5px;
+}
+
+#input:focus {
+    border: 1px solid @accent;
+}
+
+#scroll {
+    margin: 0;
+}
+
+#entry {
+    padding: 12px 15px;
+    margin: 6px 0;
+    border-radius: 10px;
+}
+
+#entry:selected {
+    background-color: alpha({{ .colors.wofi.accent }}, 0.25);
+    border: 1px solid alpha({{ .colors.wofi.accent }}, 0.5);
+}
+
+#entry image {
+    margin-right: 20px;
+    min-width: 24px;
+}
+
+#text {
+    color: @text_color;
+}
+
+#entry:selected #text {
+    color: #ffffff;
+    font-weight: bold;
+}

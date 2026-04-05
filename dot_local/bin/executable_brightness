@@ -1,0 +1,11 @@
+#!/bin/bash
+
+VALUE="$1"
+
+MONITORS=($(ddcutil detect | grep 'Display' | awk '{print $2}'))
+
+for MON in "${MONITORS[@]}"; do
+  ddcutil --display "$MON" setvcp 10 "$VALUE" &
+done
+
+wait
