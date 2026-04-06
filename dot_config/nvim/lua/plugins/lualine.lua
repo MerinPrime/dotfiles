@@ -3,9 +3,11 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
+        local catppuccin = require('catppuccin.utils.lualine')
+
         require('lualine').setup {
             options = {
-                theme = 'catppuccin',
+                theme = catppuccin,
                 component_separators = '',
                 section_separators = { left = '', right = '' },
                 icons_enabled = true,
