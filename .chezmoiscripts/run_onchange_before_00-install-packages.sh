@@ -1,54 +1,32 @@
 #!/bin/bash
 set -e
 
-echo "--- Update repositories ---"
-sudo pacman -Syu
+echo "Checking package list..."
 
-if ! command -v paru &>/dev/null; then
-  echo "--- Install Paru (from CachyOS repo) ---"
-  sudo pacman -S --needed --noconfirm paru
+if [ "$EUID" -eq 0 ]; then
+  echo "Error: Do not run this script as root."
+  exit 1
 fi
 
-PKGS=()
+if ! command -v paru &>/dev/null; then
+  echo "Installing paru..."
+  sudo pacman -Sy --needed --noconfirm paru
+fi
 
-# --- [CORE] ---
-PKGS+=(fish starship fastfetch eza bat fd ripgrep btop ddcutil lm_sensors)
-PKGS+=(git lazygit github-cli)
-PKGS+=(unzip zip p7zip unrar tar gzip bzip2 xz)
-PKGS+=(ffmpegthumbnailer gst-libav libheif resvg)
-PKGS+=(libldac libfreeaptx)
-PKGS+=(snapper snap-pac grub-btrfs)
-PKGS+=(tree-sitter neovim)
+PACKAGE_FILE="{{ .chezmoi.sourceDir }}/packages.txt"
+PACKAGES=$(grep -vE "^\s*#|^\s*$" "$PACKAGE_FILE" | tr '\n' ' ')
 
-# --- [DEV] ---
-PKGS+=(nodejs npm pnpm bun python uv ruff wget)
+MISSING_PACKAGES=$(pacman -T $PACKAGES || true)
 
-# --- [SYSTEM SERVICES] ---
-PKGS+=(networkmanager linux-cachyos-nvidia-open pipewire pipewire-pulse wireplumber bluez bluez-utils zram-generator)
+if [ -z "$MISSING_PACKAGES" ]; then
+  echo "All packages are already installed. Skipping."
+  exit 0
+fi
 
-# --- [FONTS] ---
-PKGS+=(ttf-jetbrains-mono ttf-jetbrains-mono-nerd noto-fonts-emoji ttf-sarasa-gothic)
+echo "Updating pacman databases..."
+sudo pacman -Sy
 
-# --- [DESKTOP] ---
-PKGS+=(catppuccin-gtk-theme-git papirus-icon-theme bibata-cursor-theme-bin)
-PKGS+=(hyprland waybar swaybg mako wofi wl-clipboard cliphist mate-polkit hyprpicker grimblast greetd greetd-tuigreet)
+echo "Installing missing packages: $MISSING_PACKAGES"
+paru -S --noconfirm $MISSING_PACKAGES
 
-# --- [APPS] ---
-PKGS+=(
-  kitty
-  nautilus sushi gvfs gvfs-mtp gvfs-google
-  loupe
-  overskride-bin
-  pwvucontrol
-  showtime
-  fragments
-)
-
-# --- [EXTRA APPS] ---
-PKGS+=(zen-browser-bin amneziavpn-bin spotify discord telegram-desktop gdlauncher-carbon-bin)
-PKGS+=(steam proton-cachyos-slr)
-PKGS+=(ollama openai-codex gemini-cli)
-
-echo "--- Installing all packages ---"
-paru -S --needed --noconfirm "${PKGS[@]}"
-
+echo "Package installation complete."
