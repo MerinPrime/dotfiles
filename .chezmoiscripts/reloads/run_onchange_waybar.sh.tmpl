@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Directory hash: {{ output "bash" "-c" (printf "find '%s' -type f -exec sha256sum {} + | sort | sha256sum" (joinPath .chezmoi.sourceDir "dot_config/waybar")) }}
+
+if pgrep -x "waybar" > /dev/null; then
+    echo "Reloading Waybar configuration..."
+    killall -SIGUSR2 waybar || true
+fi

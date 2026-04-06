@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Directory hash: {{ output "bash" "-c" (printf "find '%s' -type f -exec sha256sum {} + | sort | sha256sum" (joinPath .chezmoi.sourceDir "dot_config/mako")) }}
+
+if pgrep -x "mako" > /dev/null; then
+    echo "Reloading Mako configuration..."
+    makoctl reload || true
+fi
