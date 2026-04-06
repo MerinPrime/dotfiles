@@ -1,39 +1,39 @@
-!/bin/bash
-# i2c-modules hash: {{ include "dot_config/system/modules/i2c.conf" | sha256sum }}
-
+#!/bin/bash
 set -e
 
-echo "--- Setting modules ---"
-sudo cp -f "$HOME/.config/system/modules/i2c.conf" "/etc/modules-load.d/i2c.conf"
+# i2c-conf hash: {{ include "dot_config/system/modules/i2c.conf" | sha256sum }}
+
+echo "--- Setting i2c modules ---"
+sudo cp -f "{{ .chezmoi.homeDir }}/.config/system/modules/i2c.conf" "/etc/modules-load.d/i2c.conf"
 sudo usermod -aG i2c {{ .chezmoi.username }}
 
-echo "--- Updating GRUB configuration ---"
-
-FILE="/etc/default/grub"
+echo "--- Optimizing GRUB configuration ---"
+GRUB_FILE="/etc/default/grub"
 PARAMS="quiet splash loglevel=3 systemd.show_status=false rd.udev.log_level=3 vt.global_cursor_default=0 nvidia-drm.modeset=1"
 GRUB_CHANGED=0
 
-if [ ! -f "$FILE" ]; then
-    echo "ERROR: $FILE not found!"
+if [ ! -f "$GRUB_FILE" ]; then
+    echo "Error: $GRUB_FILE not found!"
     exit 1
 fi
 
 for param in $PARAMS; do
-    if ! grep -q "\b$param\b" "$FILE"; then
-        sudo sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\(['\"]\)\)/\1${param} /" "$FILE"
+    if ! grep -q "\b$param\b" "$GRUB_FILE"; then
+        echo "Adding parameter: $param"
+        sudo sed -i "s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\(['\"]\)\)/\1${param} /" "$GRUB_FILE"
         GRUB_CHANGED=1
     fi
 done
 
 if [ "$GRUB_CHANGED" -eq 1 ]; then
-    sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/s/  */ /g' "$FILE"
-    sudo sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/ ' / '/g" "$FILE"
-    sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/s/ " / "/g' "$FILE"
+    sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/s/  */ /g' "$GRUB_FILE"
+    sudo sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/ ' / '/g" "$GRUB_FILE"
+    sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/s/ " / "/g' "$GRUB_FILE"
     
-    echo "--- Generating new grub.cfg ---"
+    echo "Generating new grub.cfg..."
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 else
-    echo "--- GRUB is already optimized ---"
+    echo "GRUB parameters are already optimized."
 fi
 
 echo "--- Configuring Plymouth ---"
@@ -41,18 +41,21 @@ sudo mkdir -p /etc/plymouth
 if [ -f /etc/plymouth/plymouthd.conf ]; then
     sudo sed -i 's/.*ShowDelay.*/ShowDelay=0/' /etc/plymouth/plymouthd.conf
 else
-    sudo bash -c 'echo -e "[Daemon]\nShowDelay=0" > /etc/plymouth/plymouthd.conf'
+    echo -e "[Daemon]\nShowDelay=0" | sudo tee /etc/plymouth/plymouthd.conf > /dev/null
 fi
 
-echo "--- Checking mkinitcpio ---"
+echo "--- Configuring mkinitcpio ---"
 if systemd-detect-virt -q; then
-    echo "--- VM detected: Skipping NVIDIA modules to avoid errors ---"
+    echo "Virtual machine detected: Skipping NVIDIA modules."
     sudo mkinitcpio -P
 else
     if ! grep -q "nvidia" /etc/mkinitcpio.conf; then
+        echo "Adding NVIDIA modules to mkinitcpio..."
         sudo sed -i 's/^MODULES=(/&crc32c nvidia nvidia_modeset nvidia_uvm nvidia_drm /' /etc/mkinitcpio.conf
         sudo mkinitcpio -P
     else
-        echo "--- mkinitcpio modules are already set ---"
+        echo "mkinitcpio modules are already configured."
     fi
 fi
+
+echo "System setup script finished successfully."
