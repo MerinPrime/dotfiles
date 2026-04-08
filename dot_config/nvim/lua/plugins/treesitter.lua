@@ -103,6 +103,7 @@ return {
 			"trouble",
 			"lazygit",
 			"conform-info",
+			"toggleterm",
 		}
 
 		vim.api.nvim_create_autocmd("FileType", {
