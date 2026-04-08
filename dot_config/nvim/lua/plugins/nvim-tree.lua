@@ -3,6 +3,30 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("nvim-tree").setup({
+            update_focused_file = {
+                enable = true,
+                update_root = true,
+            },
+            renderer = {
+                highlight_git = true,
+                indent_markers = {
+                    enable = true,
+                },
+                icons = {
+                    show = {
+                        file = true,
+                        folder = true,
+                        folder_arrow = true,
+                        git = true,
+                    },
+                    glyphs = {
+                        folder = {
+                            arrow_closed = "⏵",
+                            arrow_open = "⏷",
+                        },
+                    },
+                },
+            },
             filters = {
                 dotfiles = false,
                 git_ignored = true,
@@ -23,7 +47,6 @@ return {
                 vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
                 vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
                 vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
-                vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
             end,
         })
     end,
