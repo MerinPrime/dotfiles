@@ -3,6 +3,9 @@ fish
 starship
 fastfetch
 eza
+hwinfo
+expac
+fzf
 bat
 fd
 ripgrep
