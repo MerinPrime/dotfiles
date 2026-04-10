@@ -34,6 +34,7 @@ snap-pac
 grub-btrfs
 tree-sitter
 neovim
+zoxide
 
 # --- [DEV] ---
 nodejs
