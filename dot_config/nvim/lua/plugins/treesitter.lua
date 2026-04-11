@@ -48,6 +48,7 @@ return {
 					"gitcommit",
 					"gitignore",
 				},
+				auto_install = true
 			},
 		},
 	},
@@ -55,8 +56,6 @@ return {
 	branch = "main",
 	build = ":TSUpdate",
 	config = function()
-		local ts = require("nvim-treesitter")
-
 		local parsers_loaded = {}
 		local parsers_pending = {}
 		local parsers_failed = {}
@@ -115,6 +114,7 @@ return {
 				end
 
 				local lang = vim.treesitter.language.get_lang(event.match) or event.match
+
 				local buf = event.buf
 
 				if parsers_failed[lang] then
@@ -126,8 +126,6 @@ return {
 				else
 					table.insert(parsers_pending, { buf = buf, lang = lang })
 				end
-
-				ts.install({ lang })
 			end,
 		})
 	end,

@@ -28,5 +28,5 @@ return {
         }
     },
     root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
-    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
 }

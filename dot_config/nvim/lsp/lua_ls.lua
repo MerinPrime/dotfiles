@@ -11,4 +11,5 @@ return {
             telemetry = { enable = false },
         },
     },
+    filetypes = { "lua" },
 }

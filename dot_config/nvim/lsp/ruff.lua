@@ -9,4 +9,5 @@ return {
 	settings = {
 		args = {},
 	},
+	filetypes = { "python" },
 }

@@ -1,6 +1,5 @@
 return {
     cmd = { "vscode-css-language-server", "--stdio" },
-    filetypes = { "css", "scss", "less" },
     settings = {
         css = {
             validate = true,
@@ -8,5 +7,6 @@ return {
                 unknownAtRules = "ignore"
             }
         }
-    }
+    },
+    filetypes = { "css", "scss", "less" }
 }

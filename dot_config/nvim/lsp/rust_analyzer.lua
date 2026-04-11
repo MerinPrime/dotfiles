@@ -5,4 +5,5 @@ return {
             diagnostics = { disabled = { "unlinked-file" } },
         },
     },
+    filetypes = { 'rust' },
 }
