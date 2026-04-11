@@ -63,9 +63,6 @@ ttf-sarasa-gothic
 noto-fonts-emoji
 
 # --- [DESKTOP] ---
-catppuccin-gtk-theme-git
-papirus-icon-theme
-bibata-cursor-theme-bin
 hyprland
 waybar
 swaybg
@@ -78,6 +75,14 @@ hyprpicker
 grimblast
 greetd
 greetd-tuigreet
+xdg-desktop-portal-hyprland
+gsettings-desktop-schemas
+gsettings-system-schemas
+kvantum
+catppuccin-gtk-theme-mocha
+papirus-folders-catppuccin-git
+papirus-icon-theme
+bibata-cursor-theme-bin
 
 # --- [APPS] ---
 kitty
