@@ -19,12 +19,12 @@ return {
                         folder_arrow = true,
                         git = true,
                     },
-                    glyphs = {
-                        folder = {
-                            arrow_closed = "⏵",
-                            arrow_open = "⏷",
-                        },
-                    },
+                    -- glyphs = {
+                    --     folder = {
+                    --         arrow_closed = "⏵",
+                    --         arrow_open = "⏷",
+                    --     },
+                    -- },
                 },
             },
             filters = {
