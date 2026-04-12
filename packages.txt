@@ -75,6 +75,8 @@ hyprpicker
 grimblast
 greetd
 greetd-tuigreet
+xdg-desktop-portal-gtk
+xdg-desktop-portal-kde
 xdg-desktop-portal-hyprland
 gsettings-desktop-schemas
 gsettings-system-schemas
