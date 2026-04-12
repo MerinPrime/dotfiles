@@ -33,10 +33,10 @@ colors:
     inactive_border: "#1e1e2eaa"
 
   mako:
-    background: "#111826aa"
+    background: "#111826cc"
     text: "#cdd6f4"
-    border: "#1e1e2eca"
-    progress: "#0f172a5a"
+    border: "#65659a19"
+    progress: "#65659a19"
     high_text: "#ffb4abff"
 
   waybar:
@@ -52,7 +52,7 @@ colors:
 
   wofi:
     background: "#111826"
-    border: "#1e1e2e"
+    border: "#65659a"
     accent: "#9b1b1b"
     text: "#cdd6f4"
 
