@@ -1,0 +1,59 @@
+@define-color bg_color     {{ .colors.wlogout.background }};
+@define-color accent       {{ .colors.wlogout.accent }};
+@define-color text_color   {{ .colors.wlogout.text }};
+@define-color border_color {{ .colors.wlogout.border }};
+
+* {
+    background-image: none;
+    font-family: "JetBrainsMono Nerd Font";
+    box-shadow: none;
+}
+
+window {
+    background-color: alpha(@bg_color, 0.8); /* Полупрозрачный фон */
+}
+
+button {
+    color: @text_color;
+    background-color: alpha(@bg_color, 0.5);
+    outline-style: none;
+    border: 2px solid alpha(@border_color, 0.2);
+    border-radius: 20px;
+    margin: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    transition: all 0.3s cubic-bezier(.55,0.085,.68,.53);
+}
+
+button:focus,
+button:active,
+button:hover {
+    background-color: alpha(@accent, 0.4);
+    border: 2px solid @accent;
+    color: @accent;
+}
+
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
+}

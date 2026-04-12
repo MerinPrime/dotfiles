@@ -68,6 +68,7 @@ waybar
 swaybg
 mako
 wofi
+wlogout
 wl-clipboard
 cliphist
 mate-polkit

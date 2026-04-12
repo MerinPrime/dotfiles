@@ -62,3 +62,9 @@ colors:
     directory: "#ff3c5c"
     git: "#45475a"
 
+  wlogout:
+    background: "#111826"
+    border: "#65659a"
+    text: "#ffffff"
+    accent: "#9b1b1b"
+
