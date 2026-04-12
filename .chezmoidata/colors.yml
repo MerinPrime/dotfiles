@@ -68,3 +68,8 @@ colors:
     text: "#ffffff"
     accent: "#9b1b1b"
 
+  hyprlock:
+    background: "#111826"
+    text: "#ffffff"
+    accent: "#9b1b1b"
+

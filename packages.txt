@@ -69,6 +69,7 @@ swaybg
 mako
 wofi
 wlogout
+hyprlock
 wl-clipboard
 cliphist
 mate-polkit
