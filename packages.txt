@@ -55,6 +55,8 @@ wireplumber
 bluez
 bluez-utils
 zram-generator
+reflector
+pacman-contrib
 
 # --- [FONTS] ---
 ttf-jetbrains-mono-nerd

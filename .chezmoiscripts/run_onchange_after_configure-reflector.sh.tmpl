@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# {{ include "dot_config/reflector/reflector.conf" | sha256sum }}
+
+echo "Applying Reflector configuration to /etc..."
+
+sudo mkdir -p /etc/xdg/reflector
+sudo cp {{ joinPath .chezmoi.sourceDir "dot_config/reflector/reflector.conf" | quote }} /etc/xdg/reflector/reflector.conf
+
+if systemctl is-active --quiet reflector.service; then
+    sudo systemctl restart reflector.service
+fi
