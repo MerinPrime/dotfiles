@@ -103,7 +103,7 @@ fragments
 zen-browser-bin
 amneziavpn-bin
 spotify
-discord
+vesktop-bin
 telegram-desktop
 gdlauncher-carbon-bin
 steam
