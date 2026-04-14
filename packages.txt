@@ -3,7 +3,6 @@ fish
 starship
 fastfetch
 eza
-hwinfo
 expac
 fzf
 bat
@@ -15,14 +14,6 @@ lm_sensors
 git
 lazygit
 github-cli
-unzip
-zip
-p7zip
-unrar
-tar
-gzip
-bzip2
-xz
 ffmpegthumbnailer
 gst-libav
 libheif
@@ -35,6 +26,15 @@ grub-btrfs
 tree-sitter
 neovim
 zoxide
+
+# --- [ARCHIVATION] ---
+unzip
+zip
+p7zip
+tar
+gzip
+bzip2
+xz
 
 # --- [DEV] ---
 nodejs
@@ -57,7 +57,6 @@ bluez-utils
 zram-generator
 
 # --- [FONTS] ---
-ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
 ttf-sarasa-gothic
 noto-fonts-emoji
@@ -77,11 +76,10 @@ hyprpicker
 grimblast
 greetd
 greetd-tuigreet
+playerctl
 xdg-desktop-portal-gtk
-xdg-desktop-portal-kde
 xdg-desktop-portal-hyprland
 gsettings-desktop-schemas
-gsettings-system-schemas
 kvantum
 catppuccin-gtk-theme-mocha
 papirus-folders-catppuccin-git

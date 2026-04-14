@@ -12,7 +12,7 @@ exec-once = hyprctl setcursor Bibata-Modern-Classic 24
 
 exec-once = bash -c 'export PATH=$PATH:$HOME/.local/bin/dotfiles; brightness 100'
 
-exec-once = swaybg -o \* -i ~/.local/share/wallpapers/tokyo-red.png -m fill
+exec-once = swaybg -o \* -i {{ .data.wallpaper }} -m fill
 exec-once = waybar &
 
 # exec-once = mako &
