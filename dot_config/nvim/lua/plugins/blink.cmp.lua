@@ -45,16 +45,7 @@ return {
             },
         },
         sources = {
-            default = { 'lsp', 'snippets', 'buffer', 'minuet' },
-            providers = {
-                minuet = {
-                    name = 'minuet',
-                    module = 'minuet.blink',
-                    async = true,
-                    timeout_ms = 3000,
-                    score_offset = 50,
-                },
-            },
+            default = { 'lsp', 'snippets', 'buffer' },
         },
         cmdline = {
             sources = { 'cmdline' },
