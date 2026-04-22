@@ -17,13 +17,15 @@ end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "gd", function()
 	require("telescope.builtin").lsp_definitions()
-end, { desc = "Go to definition" })
+end, { desc = "LSP: Go to definition" })
 
 vim.keymap.set("n", "gr", function()
 	require("telescope.builtin").lsp_references()
-end, { desc = "Find references" })
+end, { desc = "LSP: Find references" })
 
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename" })
+vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'LSP: Code Actions' })
+
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP: Rename" })
 
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find files in project" })
 vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Live grep in project" })
