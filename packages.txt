@@ -46,7 +46,7 @@ python
 uv
 ruff
 wget
-roslyn
+roslyn-ls
 netcoredbg-bin
 
 # --- [SYSTEM SERVICES] ---
