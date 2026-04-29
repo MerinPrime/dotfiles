@@ -46,6 +46,7 @@ python
 uv
 ruff
 wget
+roslyn
 
 # --- [SYSTEM SERVICES] ---
 networkmanager
