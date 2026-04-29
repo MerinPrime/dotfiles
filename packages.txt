@@ -47,6 +47,7 @@ uv
 ruff
 wget
 roslyn
+netcoredbg-bin
 
 # --- [SYSTEM SERVICES] ---
 networkmanager

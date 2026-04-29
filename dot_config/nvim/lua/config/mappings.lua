@@ -67,6 +67,13 @@ end
 
 vim.keymap.set("n", "<leader>cd", copy_line_diagnostics, { silent = true })
 
+vim.keymap.set("n", "<F5>", function() require("dap").continue() end)
+vim.keymap.set("n", "<F10>", function() require("dap").step_over() end)
+vim.keymap.set("n", "<F11>", function() require("dap").step_into() end)
+vim.keymap.set("n", "<F12>", function() require("dap").step_out() end)
+
+vim.keymap.set("n", "<leader>b", function() require("dap").toggle_breakpoint() end)
+
 -- vim.keymap.set("n", "md", function()
 --     require("markview").commands.toggle()
 -- end, { desc = "Toggle markdown viewer" })
