@@ -97,7 +97,6 @@ nautilus
 sushi
 gvfs
 gvfs-mtp
-gvfs-google
 loupe
 overskride-bin
 pwvucontrol
