@@ -4,26 +4,20 @@
 
 source = ~/.config/hypr/config/defaults.conf
 
-# Autostart wiki https://wiki.hyprland.org/Configuring/Keywords/#executing
+# Environment & DBus
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-exec-once = gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-exec-once = gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
+# Core UI
 exec-once = hyprctl setcursor Bibata-Modern-Classic 24
-
-exec-once = bash -c 'export PATH=$PATH:$HOME/.local/bin/dotfiles; brightness 100'
-
 exec-once = swaybg -o \* -i {{ .data.wallpaper }} -m fill
-exec-once = waybar &
+exec-once = waybar
+exec-once = mako
 
-# exec-once = mako &
-exec-once = bash -c "mkfifo /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob && tail -f /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob | wob & disown" &
+# Utilities
 exec-once = /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
-exec-once = hyprctl dispatch workspace 1
+exec-once = wl-paste --type text --watch cliphist store 
+exec-once = wl-paste --type image --watch cliphist store
 
-# ## Slow app launch fix
-exec-once = systemctl --user import-environment &
-exec-once = hash dbus-update-activation-environment 2>/dev/null &
-exec-once = dbus-update-activation-environment --systemd &
-
-exec-once = wl-paste --type text --watch cliphist -max-items=200 store
-exec-once = wl-paste --type image --watch cliphist -max-itesm=200 store
+# WOB Overlay setup
+exec-once = rm -f /tmp/wob.sock && mkfifo /tmp/wob.sock && tail -f /tmp/wob.sock | wob
