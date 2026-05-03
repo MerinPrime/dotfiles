@@ -1,2 +1,3 @@
 data:
+  wallpapers_folder: "$HOME/.local/share/wallpapers"
   wallpaper: "~/.local/share/wallpapers/tokyo-red.png"
