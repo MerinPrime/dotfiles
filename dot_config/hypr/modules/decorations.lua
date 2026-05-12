@@ -1,0 +1,23 @@
+-- =========================================================================
+--                          Decorations Configuration
+-- =========================================================================
+
+hl.config({
+    decoration = {
+        active_opacity = 1.0,
+        rounding = 24,
+        dim_special = 0.6,
+
+        blur = {
+            enabled = true,
+            size = 3,
+            passes = 4,
+            xray = false,
+            new_optimizations = true,
+        },
+
+        shadow = {
+            enabled = false,
+        },
+    },
+})

@@ -2,7 +2,8 @@
 # ┃                       Layout Variables                      ┃
 # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-source = ~/.config/hypr/config/colors.conf
+$active_border = rgba({{ trimPrefix "#" .colors.hypr.active_border }})
+$inactive_border = rgba({{ trimPrefix "#" .colors.hypr.inactive_border }})
 
 general {
     gaps_in = 8
@@ -37,3 +38,4 @@ dwindle {
 master {
     new_status = master
 }
+
