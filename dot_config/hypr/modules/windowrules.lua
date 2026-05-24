@@ -130,6 +130,41 @@ hl.window_rule({
     match = { class = "^(org.telegram.desktop)$" }
 })
 
+hl.window_rule({
+    match = {
+        class = "^(Unity)$",
+    },
+    suppress_event = "maximize"
+})
+hl.window_rule({
+    match = {
+        class = "^(unityhub)$",
+    },
+    suppress_event = "maximize"
+})
+
+hl.window_rule({
+    match = {
+        class = "^(Unity)$",
+        title = "^(Hold)$",
+    },
+    no_focus = true
+})
+hl.window_rule({
+    match = {
+        class = "^(Unity)$",
+        title = "^(.*Popup.*)$",
+    },
+    float = true
+})
+hl.window_rule({
+    match = {
+        class = "^(Unity)$",
+        title = "^(.*Popup.*)$",
+    },
+    no_focus = true
+})
+
 
 -- =========================================================================
 --                          Layer Rules
