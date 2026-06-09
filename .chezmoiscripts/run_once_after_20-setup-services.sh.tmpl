@@ -15,10 +15,14 @@ if [ -f /etc/systemd/zram-generator.conf ]; then
 fi
 
 echo "--- Setting up Autologin ---"
-sudo mkdir -p /etc/greetd
-sudo cp -f "$HOME/.config/system/greetd/config.toml" "/etc/greetd/config.toml"
-sudo chown -R greeter:greeter /etc/greetd
-sudo systemctl enable greetd.service
+#sudo mkdir -p /etc/greetd
+#sudo cp -f "$HOME/.config/system/greetd/config.toml" "/etc/greetd/config.toml"
+#sudo chown -R greeter:greeter /etc/greetd
+#sudo systemctl enable greetd.service
+sudo mkdir -p "/usr/share/sddm/themes" && sudo cp -rf "$HOME/.config/system/sddm/themes/tokyo-red-theme" "/usr/share/sddm/themes/"
+sudo mkdir -p "/etc/sddm.conf.d" && sudo cp -rf "$HOME/.config/system/sddm/autologin.conf" "/etc/sddm.conf.d/"
+sudo mkdir -p "/etc/sddm.conf.d" && sudo cp -rf "$HOME/.config/system/sddm/theme.conf" "/etc/sddm.conf.d/"
+sudo systemctl enable sddm --now
 
 echo "--- Services setup complete ---"
 

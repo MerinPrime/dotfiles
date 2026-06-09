@@ -27,6 +27,9 @@ tree-sitter
 neovim
 zoxide
 tokei
+qt5-quickcontrols
+qt5-quickcontrols2
+qt5-declarative
 
 # --- [ARCHIVATION] ---
 unzip
@@ -79,8 +82,7 @@ cliphist
 mate-polkit
 hyprpicker
 grimblast
-greetd
-greetd-tuigreet
+sddm
 playerctl
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
