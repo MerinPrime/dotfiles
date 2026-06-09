@@ -3,7 +3,13 @@ return {
     build = false,
     event = { "BufReadPost" },
     config = function()
-        require("image").setup()
+        require("image").setup({
+            backend = 'kitty',
+            integrations = {
+                markdown = {
+                    enabled = false
+                }
+            }
+        })
     end
 }
-

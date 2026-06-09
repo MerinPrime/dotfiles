@@ -19,9 +19,9 @@ return {
 				dockerfile = { "hadolint" },
 				sh = { "shfmt" },
 
-				html = { "prettier" },
-				css = { "prettier" },
-				scss = { "prettier" },
+				html = { "prettierd", "prettier", stop_after_first = true },
+				scss = { "prettierd", "prettier", stop_after_first = true },
+				css = { "prettierd", "prettier", stop_after_first = true },
 			},
 			formatters = {
 				shfmt = {
