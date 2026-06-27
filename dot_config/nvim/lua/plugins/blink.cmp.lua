@@ -1,7 +1,11 @@
 return {
     'saghen/blink.cmp',
-    version = '1.*',
-    event = { 'VeryLazy' },
+    dependencies = {
+        'saghen/blink.lib',
+    },
+    build = function()
+        require('blink.cmp').build():pwait()
+    end,
     opts = {
         keymap = {
             preset = 'none',
@@ -44,14 +48,16 @@ return {
                 show_documentation = false,
             },
         },
+        snippets = {
+            preset = 'luasnip',
+        },
         sources = {
             default = { 'lsp', 'snippets', 'buffer' },
         },
         cmdline = {
-            sources = { 'cmdline' },
             completion = { menu = { auto_show = true } },
         },
         fuzzy = { implementation = "prefer_rust_with_warning" }
     },
-    opts_extend = { "sources.default" }
+    event = { 'VeryLazy' }
 }
