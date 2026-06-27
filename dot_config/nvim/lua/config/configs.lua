@@ -4,20 +4,6 @@ vim.opt.cmdheight = 0
 vim.opt.laststatus = 0
 vim.opt.splitkeep = "screen"
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevelstart = 99
-
--- vim.api.nvim_create_autocmd("BufReadPost", {
---     pattern = "*.py",
---     desc = "Apply code folds after reading Python file into buffer (uses vim.schedule)",
---     callback = function()
---         vim.schedule(function()
---             vim.cmd("normal! zx")
---         end)
---     end,
--- })
-
 vim.opt.cursorline = true
 vim.opt.wrap = false
 vim.wo.linebreak = true
