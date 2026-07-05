@@ -23,28 +23,30 @@ hl.curve("linear", {
     points = { { 0, 0 }, { 1, 1 } }
 })
 
-hl.animation({
-    leaf = "windowsIn",
-    enabled = true,
-    speed = 5.5,
-    bezier = "md3_decel",
-    style = "popin 85%"
-})
+hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 
-hl.animation({
-    leaf = "windowsOut",
-    enabled = true,
-    speed = 4,
-    bezier = "md3_accel",
-    style = "popin 85%"
-})
+-- hl.animation({
+--     leaf = "windowsIn",
+--     enabled = true,
+--     speed = 5.5,
+--     bezier = "md3_decel",
+--     style = "popin 85%"
+-- })
 
-hl.animation({
-    leaf = "windowsMove",
-    enabled = true,
-    speed = 5.5,
-    bezier = "md3_decel"
-})
+-- hl.animation({
+--     leaf = "windowsOut",
+--     enabled = true,
+--     speed = 4,
+--     bezier = "md3_accel",
+--     style = "popin 85%"
+-- })
+
+-- hl.animation({
+--     leaf = "windowsMove",
+--     enabled = true,
+--     speed = 5.5,
+--     bezier = "md3_decel"
+-- })
 
 hl.animation({
     leaf = "border",
@@ -75,3 +77,5 @@ hl.animation({
     bezier = "md3_decel",
     style = "slidefadevert 15%"
 })
+
+hl.animation({ leaf = "windows", enabled = true, speed = 3, spring = "easy", style = "slide" })
