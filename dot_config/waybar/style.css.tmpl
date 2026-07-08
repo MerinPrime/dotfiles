@@ -10,63 +10,83 @@
 
 * {
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 700;
     border: none;
     border-radius: 0;
 }
 
 #waybar {
-    background-color: alpha(@bg_main, 0.3);
+    background-color: transparent;
     color: @text_main;
-    border: 2px solid alpha(@border_main, 0.1);
-    border-radius: 24px;
+}
+
+#left,
+#center,
+#right {
+    background-color: alpha(@bg_main, 0.45);
+    border: 2px solid alpha(@border_main, 0.2);
+    border-radius: 16px;
+}
+
+#custom-spotify {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#temperature {
+    color: alpha(@text_main, 0.45);
+    font-weight: 500;
 }
 
 #workspaces {
-    margin: 0 10px;
+    padding: 0 6px;
 }
 
 #workspaces button {
-    margin: 6px 2px; 
-    padding: 0 8px;
+    margin: 4px 2px;
+    padding: 0 6px;
     min-height: 0;
-    color: alpha(@text_main, 0.8);
+    color: alpha(@text_main, 0.6);
     background-color: transparent;
-    border-radius: 12px;
+    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 #workspaces button.active {
     color: @accent_active;
-    background-color: transparent;
+    background-color: alpha(@accent_active, 0.1);
 }
 
 #workspaces button.urgent {
     color: @accent_urgent;
+    background-color: alpha(@accent_urgent, 0.2);
 }
 
 #custom-spotify {
-    padding: 0 12px;
+    padding: 4px 16px;
     color: @spotify_color;
-    opacity: 0.9;
 }
 
-#clock {
-    padding: 0 15px;
-    color: alpha(@text_main, 0.8);
+#left #temperature {
+    padding: 0 8px;
+}
+
+#right #clock {
+    padding: 4px 16px;
 }
 
 tooltip {
-    background-color: alpha(@bg_main, 0.1);
+    background-color: alpha(@bg_main, 0.8);
     color: @text_main;
-    border: 2px solid alpha(@border_main, 0.1);
-    border-radius: 20px;
-    box-shadow: 0 4px 10px alpha(@shadow_color, 0.5);
+    border: 2px solid alpha(@border_main, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px alpha(@shadow_color, 0.6);
 }
 
 tooltip label {
     color: @text_muted;
     font-family: "JetBrainsMono Nerd Font";
     font-size: 13px;
+    padding: 4px;
 }

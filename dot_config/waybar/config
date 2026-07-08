@@ -1,22 +1,43 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 45,
+    "height": 40,
     "spacing": 5,
-    "margin-left": 14,
-    "margin-right": 14,
+    "margin-left": 32,
+    "margin-right": 32,
     "margin-top": 14,
 
     "modules-left": [
-        "hyprland/workspaces"
+        "group/left"
     ],
     "modules-center": [
-        "custom/spotify"
+        "group/center"
     ],
     "modules-right": [
-        "temperature",
-        "clock"
+        "group/right"
     ],
+
+    "group/left": {
+        "orientation": "horizontal",
+        "modules": [
+            "hyprland/workspaces",
+            "temperature"
+        ]
+    },
+
+    "group/center": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/spotify"
+        ]
+    },
+
+    "group/right": {
+        "orientation": "horizontal",
+        "modules": [
+            "clock"
+        ]
+    },
 
     "hyprland/workspaces": {
         "all-outputs": true,
@@ -36,17 +57,17 @@
         "interval": 5,
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
         "critical-threshold": 80,
-        "format-critical": "{temperatureC}°C",
-        "format": "{temperatureC}°C",
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C ",
         "format-icons": ["", "", ""],
-        "max-length": 4,
-        "min-length": 4,
+        "max-length": 6,
+        "min-length": 5,
         "tooltip-format": ""
     },
 
     "clock": {
         "format": "{:%I:%M %p}",
         "format-alt": "{:%A, %d %B %Y}",
-        "tooltip-format": "{calendar}",
+        "tooltip-format": "{calendar}"
     }
 }
