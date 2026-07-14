@@ -2,16 +2,13 @@
 --                          Layout & Variables
 -- =========================================================================
 
-local active_border = "rgba({{ trimPrefix "#" .colors.hypr.active_border }})"
-local inactive_border = "rgba({{ trimPrefix "#" .colors.hypr.inactive_border }})"
-
 hl.config({
     general = {
         gaps_in = 8,
         gaps_out = 14,
         border_size = 3,
-        ["col.active_border"] = active_border,
-        ["col.inactive_border"] = inactive_border,
+        ["col.active_border"] = ACTIVE_BORDER,
+        ["col.inactive_border"] = INACTIVE_BORDER,
         layout = "dwindle",
         allow_tearing = false,
     },

@@ -7,12 +7,11 @@ SELECTION=$(ls "$WALL_DIR" | wofi --dmenu --prompt "Change wallpaper..." --style
 if [ -n "$SELECTION" ]; then
     FULL_PATH="$WALL_DIR/$SELECTION"
     
-    awww img "$FULL_PATH" \
-        --transition-type "random" \
-        --transition-duration 2 \
-        --transition-fps 144 \
-        --transition-bezier .43,1.19,1,.4 \
-        --transition-step 90
+    matugen image "$FULL_PATH" \
+        --type scheme-tonal-spot \
+        --prefer lightness \
+        -m dark \
+        --lightness-dark 0.075
 
     mkdir -p "$HOME/.config/active-theme"
     ln -sfn "$FULL_PATH" "$HOME/.config/active-theme/wallpaper"

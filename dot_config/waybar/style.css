@@ -1,12 +1,4 @@
-@define-color bg_main      {{ .colors.waybar.bg_main }};
-@define-color border_main  {{ .colors.waybar.border_main }};
-@define-color text_main    {{ .colors.waybar.text_main }};
-@define-color text_muted   {{ .colors.waybar.text_muted }};
-@define-color shadow_color {{ .colors.waybar.shadow }};
-
-@define-color accent_active {{ .colors.waybar.accent_active }};
-@define-color accent_urgent {{ .colors.waybar.accent_urgent }};
-@define-color spotify_color {{ .colors.waybar.spotify }};
+@import "colors.css";
 
 * {
     font-family: "JetBrainsMono Nerd Font";

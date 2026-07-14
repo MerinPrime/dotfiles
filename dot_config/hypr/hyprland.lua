@@ -1,3 +1,4 @@
+require("modules.colors")
 require("modules.animations")
 require("modules.autostart")
 require("modules.decorations")
