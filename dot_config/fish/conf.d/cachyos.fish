@@ -19,6 +19,13 @@ if test -f ~/.fish_profile
 end
 
 # Add ~/.local/bin to PATH
+if test -d ~/.cargo/bin
+    if not contains -- ~/.cargo/bin $PATH
+        set -p PATH ~/.cargo/bin
+    end
+end
+
+# Add ~/.local/bin to PATH
 if test -d ~/.local/bin
     if not contains -- ~/.local/bin $PATH
         set -p PATH ~/.local/bin
