@@ -20,6 +20,7 @@ return {
                     "html",
                     "cssls",
                     "lua_ls",
+                    "clang-format",
                 },
                 automatic_installation = true,
             })

@@ -22,6 +22,10 @@ return {
 				html = { "prettierd", "prettier", stop_after_first = true },
 				scss = { "prettierd", "prettier", stop_after_first = true },
 				css = { "prettierd", "prettier", stop_after_first = true },
+
+				glsl = { "clang-format" },
+				vert = { "clang-format" },
+				frag = { "clang-format" },
 			},
 			formatters = {
 				shfmt = {
